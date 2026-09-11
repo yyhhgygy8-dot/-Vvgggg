@@ -1,0 +1,18 @@
+services:
+  v2ray-panel:
+    build: .
+    container_name: v2ray-panel
+    restart: unless-stopped
+    ports:
+      - "5000:5000/tcp"
+      - "443:443/tcp"
+    volumes:
+      - v2ray-data:/data
+    environment:
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: change-me-now
+      PUBLIC_HOST: ""
+      XRAY_PORT: "443"
+      VLESS_PATH: "/vless"
+volumes:
+  v2ray-data:
